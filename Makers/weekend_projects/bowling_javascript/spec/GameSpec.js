@@ -24,4 +24,36 @@ describe("Game", function(){
         game.roll(6, 2)
         expect(game.scorecard).toEqual([3, 4, 7, 9, 0, 16, 6, 2, 24])
     });
+
+    it('will add the correct bonus for the round following the spare', function()  {
+        game.roll(6, 4)
+        game.roll(5, 2)
+        expect(game.scorecard).toEqual([6, 4, 10, 5, 2, 22])
+    });
+
+    it('will add the correct bonus following a strike', function() {
+        game.roll(4, 4)
+        game.roll(10, 0)
+        game.roll(5, 3)
+        expect(game.scorecard).toEqual([4, 4, 8, 10, 0, 18, 5, 3, 34])
+    });
+
+    it('will be able to cope with consecutive spares', function() {
+        game.roll(5, 5)
+        game.roll(6, 4)
+        game.roll(4, 3)
+        expect(game.scorecard).toEqual([5, 5, 10, 6, 4, 26, 4, 3, 37])
+    });
+
+    it('will be able to cope with consecutive strikes', function() {
+        game.roll(10, 0)
+        game.roll(10, 0)
+        game.roll(4, 3)
+        expect(game.scorecard).toEqual([10, 0, 10, 10, 0, 30, 4, 3, 44])
+    });
+
+    it('will return a message if both rolls go in the gutter', function() {
+        game.roll(5, 4)
+        expect(game.roll(0, 0)).toEqual('Double gutter, Bad luck!')
+    });
 });

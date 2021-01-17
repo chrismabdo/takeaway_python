@@ -6,6 +6,35 @@ class Game {
         this.scorecard = [];
     }
 
+    isFirstFrame() {
+        this.scorecard.length < 4 ? true : false;
+    }
+
+    addSpareBonus() {
+        this.scorecard.length < 4 ? this.scorecard.push(this.first + this.first + this.second) : this.scorecard.push(this.scorecard[this.scorecard.length-3] + this.first + this.first + this.second);
+    }
+
+    addStrikeBonus() {
+        this.scorecard.length < 4 ? this.scorecard.push(this.first + this.first + this.second + this.second) : this.scorecard.push(this.scorecard[this.scorecard.length-3] + this.first + this.first + this.second + this.second);
+    }
+
+
+    addTotal() {
+        if (this.scorecard.length < 4) {
+            this.scorecard.push(this.first + this.second)
+        } else if (this.scorecard[this.scorecard.length -5] + this.scorecard[this.scorecard.length -4] == 10 && this.scorecard[this.scorecard.length -5] != 10) {
+            this.addSpareBonus()
+        } else if (this.scorecard[this.scorecard.length-5] == 10) {
+            this.addStrikeBonus()
+        } else if (this.first == 0 & this.second == 0) {
+            this.gutter()
+        } else if (this.scorecard.length >= 30) {
+            endGame
+        } else if (this.scorecard.length > 4) {
+            this.scorecard.push(this.scorecard[this.scorecard.length -3] + this.first + this.second);
+        }
+    }
+
     roll(first, second) {
         this.first = first;
         this.second = second;
@@ -15,33 +44,8 @@ class Game {
         this.addTotal();
     }
 
-    addTotal() {
-        if (this.scorecard.length < 4) {
-            this.scorecard.push(this.first + this.second);
-        // } else if (this.scorecard[-5] + this.scorecard[-4] == 10 && this.scorecard[-5] != 10) {
-        //     addSpareBonus
-        // } else if (this.scorecard[-5] == 10) {
-        //     addStrikeBonus
-        // } else if (this.first == 0 & this.second == 0) {
-        //     gutter
-        // } else if (this.scorecard.length >= 30) {
-        //     endGame
-        } else {
-            this.scorecard.push(this.first + this.second + this.scorecard[-3]);
-        }
-    }
 
-    isFirstFrame() {
-        this.scorecard.length < 4 ? true : false;
-    }
-
-    addSpareBonus() {
-        this.firstFrame() == true ? this.scorecard.push(first + first + second) : this.scorecard.push(this.scorecard[-3] + first + first + second);
-    }
-
-    addStrikeBonus() {
-        this.firstFrame() == true ? this.scorecard.push(first + first + second + second) : this.scorecard.push(this.scorecard[-3] + first + first + second + second);
-    }
+   
 
     gutter() {
         console.log("Double Gutter! Bad Luck");
