@@ -54,6 +54,22 @@ describe("Game", function(){
 
     it('will return a message if both rolls go in the gutter', function() {
         game.roll(5, 4)
-        expect(game.roll(0, 0)).toEqual('Double gutter, Bad luck!')
+        expect(game.gutter()).toEqual("Double Gutter! Bad Luck")
     });
+
+
+    it('will end when the tenth round ends', function() {
+        game.roll(6, 4)
+        game.roll(5, 2)
+        game.roll(7, 1)
+        game.roll(8, 2)
+        game.roll(5, 2)
+        game.roll(7, 1)
+        game.roll(6, 3)
+        game.roll(8, 2)
+        game.roll(6, 3)
+        game.roll(2, 2)
+        expect(game.roll(3, 1)).toEqual(0);
+    });
+
 });
