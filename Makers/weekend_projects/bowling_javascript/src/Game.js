@@ -36,15 +36,16 @@ class Game {
         this.second = second;
         this.scorecard.push(first);
         this.scorecard.push(second);
+        
         this.addTotal();
     }
 
     gutter() {
       
-       return "Double Gutter! Bad Luck"
+       throw "Double Gutter! Bad Luck"
     }
     endGame() {
-        return "Game Over!";
+        throw "Game Over!";
     }
 
 }

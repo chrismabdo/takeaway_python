@@ -54,7 +54,7 @@ describe("Game", function(){
 
     it('will return a message if both rolls go in the gutter', function() {
         game.roll(5, 4)
-        expect(game.gutter()).toEqual("Double Gutter! Bad Luck")
+        expect(function() {game.roll(0, 0)}).toThrow("Double Gutter! Bad Luck");
     });
 
 
@@ -69,7 +69,7 @@ describe("Game", function(){
         game.roll(8, 2)
         game.roll(6, 3)
         game.roll(2, 2)
-        expect(game.roll(3, 1)).toEqual(0);
+        expect(function() {game.roll(3, 1)}).toThrow("Game Over!");
     });
 
 });
