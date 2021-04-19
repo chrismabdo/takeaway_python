@@ -1,5 +1,5 @@
 import unittest
-
+from menu import Menu
 
 class TestSum(unittest.TestCase):
 
@@ -10,6 +10,10 @@ class TestSum(unittest.TestCase):
         x = "Hello"
         
         self.assertEqual(x.casefold(), "hello", "Should be 2")
+
+    def test_view_menu(self):
+        menu = Menu()
+        self.assertEqual(menu.view(), print("Tonight's Menu: Pizza, £9"))
 
 if __name__ == '__main__':
     unittest.main()
