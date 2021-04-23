@@ -3,7 +3,8 @@ class Menu:
     def __init__(self):
         self.list =  {
         "Pizza" : 9,
-        "Burger" : 10
+        "Burger" : 10,
+        "Ice-Cream" : 3
     }
     def view(self):
         print("Tonight's Menu: ")

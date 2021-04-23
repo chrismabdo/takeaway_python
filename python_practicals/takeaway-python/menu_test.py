@@ -1,5 +1,6 @@
 import unittest
 from menu import Menu
+from basket import Basket
 import io
 import sys
 
@@ -22,6 +23,9 @@ class TestSum(unittest.TestCase):
         sys.stdout = sys.__stdout__                     # Reset redirect.
         print ('Output', capturedOutput.getvalue()) 
     
+    def test_for_cart(self):
+        self.basket = Basket()
+        self.assertEqual(self.basket.cart, [], "Should be an empty array")
 
 if __name__ == '__main__':
     unittest.main()
