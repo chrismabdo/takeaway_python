@@ -27,5 +27,10 @@ class TestSum(unittest.TestCase):
         self.basket = Basket()
         self.assertEqual(self.basket.cart, [], "Should be an empty array")
 
+    def test_for_adding_item_to_cart(self):
+        self.basket = Basket()
+        self.basket.add("Ice-Cream")
+        self.assertEqual(self.basket.cart, ["Ice Cream"], "Shoud have added an ice-cream to cart")
+
 if __name__ == '__main__':
     unittest.main()
