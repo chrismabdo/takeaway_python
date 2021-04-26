@@ -5,5 +5,6 @@ class Basket:
       self.cart = []
       self.menu = menu
     
-    # def add_item(item):
+    def add_item(self, item):
+      self.cart.append(item)
       
