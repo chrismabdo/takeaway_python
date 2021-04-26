@@ -34,13 +34,16 @@ class TestSum(unittest.TestCase):
 
     def test_for_adding_incorrect_item_to_cart(self):
         self.basket = Basket()
-        self.basket.add_item("Sushi", 2)
-        self.assertEqual("Item not available. Please Choose another item", "Should throw error for unknown item")
+        capturedOutput = io.StringIO()                  # Create StringIO object
+        sys.stdout = capturedOutput 
+        self.basket.add_item("Sushi", 2) 
+        sys.stdout = sys.__stdout__                     # Reset redirect.
+        print ('Output', capturedOutput.getvalue())
 
     def test_total_price(self):
         self.basket = Basket()
         self.basket.add_item("Ice-Cream", 3)
-        self.assertEqual(self.basket.total, "£9", "Total Price of basket shoudl equal £9")
+        self.assertEqual(self.basket.check_total(), "Your Total Comes to £9", "Total Price of basket shoudl equal £9")
 
 
 
