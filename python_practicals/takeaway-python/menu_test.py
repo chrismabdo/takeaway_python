@@ -29,8 +29,8 @@ class TestSum(unittest.TestCase):
 
     def test_for_adding_item_to_cart(self):
         self.basket = Basket()
-        self.basket.add_item("Ice-Cream")
-        self.assertEqual(self.basket.cart, ["Ice-Cream"], "Shoud have added an ice-cream to cart")
+        self.basket.add_item("Ice-Cream", 2)
+        self.assertEqual(self.basket.cart, ["Ice-Cream", "Ice-Cream"], "Shoud have added two ice-creams to cart")
 
 if __name__ == '__main__':
     unittest.main()
