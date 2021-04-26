@@ -32,5 +32,17 @@ class TestSum(unittest.TestCase):
         self.basket.add_item("Ice-Cream", 2)
         self.assertEqual(self.basket.cart, ["Ice-Cream", "Ice-Cream"], "Shoud have added two ice-creams to cart")
 
+    def test_for_adding_incorrect_item_to_cart(self):
+        self.basket = Basket()
+        self.basket.add_item("Sushi", 2)
+        self.assertEqual("Item not available. Please Choose another item", "Should throw error for unknown item")
+
+    def test_total_price(self):
+        self.basket = Basket()
+        self.basket.add_item("Ice-Cream", 3)
+        self.assertEqual(self.basket.total, "£9", "Total Price of basket shoudl equal £9")
+
+
+
 if __name__ == '__main__':
     unittest.main()
